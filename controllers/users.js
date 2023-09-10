@@ -37,8 +37,8 @@ module.exports.getUser = (req, res, next) => {
 };
 
 module.exports.editUserData = (req, res, next) => {
-  const { name, about } = req.body;
-  User.findByIdAndUpdate(req.user._id, { name, about }, { new: true, runValidators: true })
+  const { name, email } = req.body;
+  User.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })
     .orFail()
     .then((user) => res.status(HTTP_STATUS_OK).send(user))
     .catch((err) => {
