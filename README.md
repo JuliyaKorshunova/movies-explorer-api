@@ -8,4 +8,4 @@
 Реализованно логирование запросов.
 
 Поддомен для тестов:
-https://api.diplom-movies-fil.nomoredomainsicu.ru
+https://api.juliya-diplom.nomoredomainsicu.ru
