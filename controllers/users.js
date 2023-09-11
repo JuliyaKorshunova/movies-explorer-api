@@ -30,15 +30,15 @@ module.exports.addUser = (req, res, next) => {
       }));
 };
 
-module.exports.getUser = (req, res, next) => {
-  User.find({})
+module.exports.getMeUser = (req, res, next) => {
+  User.findById({})
     .then((users) => res.status(HTTP_STATUS_OK).send(users))
     .catch(next);
 };
 
 module.exports.editUserData = (req, res, next) => {
   const { name, email } = req.body;
-  User.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })
+  User.findByIdAndUpdate(req.user._id, { name, email }, { new: 'true', runValidators: true })
     .orFail()
     .then((user) => res.status(HTTP_STATUS_OK).send(user))
     .catch((err) => {
@@ -65,7 +65,5 @@ module.exports.login = (req, res, next) => {
       );
       res.send({ token });
     })
-    .catch((err) => {
-      next(err);
-    });
+    .catch(next);
 };
